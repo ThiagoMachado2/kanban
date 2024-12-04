@@ -25,12 +25,12 @@ public class TaskController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Task> getTasksByUserId(@PathVariable Long userId) {
+    public List<Task> getTasksByUserId(@PathVariable Integer userId) {
         return taskService.getTasksByUserId(userId);
     }
 
     @GetMapping("/{taskId}")
-    public ResponseEntity<Task> getTaskById(@PathVariable Long taskId) {
+    public ResponseEntity<Task> getTaskById(@PathVariable Integer taskId) {
         Task task = taskService.getTaskById(taskId);
         if (task == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -39,25 +39,25 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestParam Long userId, @RequestBody Task task) {
+    public ResponseEntity<Task> createTask(@RequestParam Integer userId, @RequestBody Task task) {
         Task createdTask = taskService.createTask(userId, task);
         return ResponseEntity.status(201).body(createdTask);
     }
 
     @PutMapping("/{taskId}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long taskId, @RequestBody Task task) {
+    public ResponseEntity<Task> updateTask(@PathVariable Integer taskId, @RequestBody Task task) {
         Task updatedTask = taskService.updateTask(taskId, task);
         return ResponseEntity.ok(updatedTask);
     }
 
     @PutMapping("/{id}/status")
-    public ResponseEntity<Task> updateStatus(@PathVariable Long id, @RequestParam Task.Status status) {
+    public ResponseEntity<Task> updateStatus(@PathVariable Integer id, @RequestParam Task.Status status) {
         Task updatedTask = taskService.updateStatus(id, status);
         return ResponseEntity.ok(updatedTask);
     }
 
     @PutMapping("/{id}/priority")
-    public ResponseEntity<Task> updatePriority(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+    public ResponseEntity<Task> updatePriority(@PathVariable Integer id, @RequestBody Map<String, String> payload) {
         String newPriority = payload.get("priority");
         Task updatedTask = taskService.updatePriority(id, Task.Priority.valueOf(newPriority));
         return ResponseEntity.ok(updatedTask);
@@ -65,7 +65,7 @@ public class TaskController {
 
 
     @DeleteMapping("/{taskId}")
-    public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
+    public ResponseEntity<Void> deleteTask(@PathVariable Integer taskId) {
         taskService.deleteTask(taskId);
         return ResponseEntity.noContent().build();
     }

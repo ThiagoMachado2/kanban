@@ -29,16 +29,16 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public List<Task> getTasksByUserId(Long userId) {
+    public List<Task> getTasksByUserId(Integer userId) {
         return taskRepository.findByUserId(userId);
     }
 
-    public Task getTaskById(Long taskId) {
+    public Task getTaskById(Integer taskId) {
         return taskRepository.findById(taskId)
                 .orElseThrow(() -> new EntityNotFoundException("Tarefa não encontrada"));
     }
 
-    public Task createTask(Long userId, Task task) {
+    public Task createTask(Integer userId, Task task) {
         User user = userService.getUserById(userId);
         if (user == null) {
             throw new RuntimeException("Usuário não encontrado");
@@ -63,7 +63,7 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    public Task updateTask(Long taskId, Task updatedTask) {
+    public Task updateTask(Integer taskId, Task updatedTask) {
         return taskRepository.findById(taskId).map(task -> {
             if (updatedTask.getDescription() != null && !updatedTask.getDescription().isEmpty()) {
                 task.setDescription(updatedTask.getDescription());
@@ -83,7 +83,7 @@ public class TaskService {
         }).orElseThrow(() -> new RuntimeException("Tarefa não encontrada"));
     }
 
-    public Task updateStatus(Long id, Task.Status status) {
+    public Task updateStatus(Integer id, Task.Status status) {
         return taskRepository.findById(id)
                 .map(existingTask -> {
                     existingTask.setStatus(status);
@@ -92,7 +92,7 @@ public class TaskService {
                 .orElseThrow(() -> new EntityNotFoundException("Task not found"));
     }
 
-    public Task updatePriority(Long id, Task.Priority priority) {
+    public Task updatePriority(Integer id, Task.Priority priority) {
         return taskRepository.findById(id)
                 .map(existingTask -> {
                     existingTask.setPriority(priority);
@@ -101,7 +101,7 @@ public class TaskService {
                 .orElseThrow(() -> new EntityNotFoundException("Task not found"));
     }
 
-    public void deleteTask(Long taskId) {
+    public void deleteTask(Integer taskId) {
         taskRepository.deleteById(taskId);
     }
 }
