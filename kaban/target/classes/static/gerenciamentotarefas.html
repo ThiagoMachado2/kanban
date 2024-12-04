@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Tarefas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Menu superior -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Gerenciamento de Tarefas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Cadastro de Usuários</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Cadastro de Tarefas</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Gerenciar Tarefas</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Conteúdo principal -->
+<div class="container mt-4">
+    <h2 class="mb-4">Gerenciamento de Tarefas</h2>
+    <div class="row">
+        <!-- Coluna A Fazer -->
+        <div class="col-md-4">
+            <h4 class="text-center">A Fazer</h4>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p><strong>Descrição:</strong> Tarefa de Alta Prioridade</p>
+                    <p><strong>Setor:</strong> Setor X</p>
+                    <p><strong>Prioridade:</strong> Alta</p>
+                    <p><strong>Vinculado:</strong> Usuário A</p>
+                    <button class="btn btn-primary btn-sm me-2">Editar</button>
+                    <button class="btn btn-primary btn-sm">Excluir</button>
+                    <hr>
+                    <div>
+                        <label class="form-check-label me-2">Status:</label>
+                        <input type="radio" name="status1" value="A Fazer" checked> A Fazer
+                        <input type="radio" name="status1" value="Fazendo"> Fazendo
+                        <input type="radio" name="status1" value="Pronto"> Pronto
+                    </div>
+                    <button class="btn btn-primary btn-sm mt-2">Alterar Status</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna Fazendo -->
+        <div class="col-md-4">
+            <h4 class="text-center">Fazendo</h4>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p><strong>Descrição:</strong> Tarefa de Baixa Prioridade</p>
+                    <p><strong>Setor:</strong> Setor Y</p>
+                    <p><strong>Prioridade:</strong> Baixa</p>
+                    <p><strong>Vinculado:</strong> Usuário B</p>
+                    <button class="btn btn-primary btn-sm me-2">Editar</button>
+                    <button class="btn btn-primary btn-sm">Excluir</button>
+                    <hr>
+                    <div>
+                        <label class="form-check-label me-2">Status:</label>
+                        <input type="radio" name="status2" value="A Fazer"> A Fazer
+                        <input type="radio" name="status2" value="Fazendo" checked> Fazendo
+                        <input type="radio" name="status2" value="Pronto"> Pronto
+                    </div>
+                    <button class="btn btn-primary btn-sm mt-2">Alterar Status</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna Pronto -->
+        <div class="col-md-4">
+            <h4 class="text-center">Pronto</h4>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p><strong>Descrição:</strong> Tarefa Concluída</p>
+                    <p><strong>Setor:</strong> Setor Z</p>
+                    <p><strong>Prioridade:</strong> Média</p>
+                    <p><strong>Vinculado:</strong> Usuário C</p>
+                    <button class="btn btn-primary btn-sm me-2">Editar</button>
+                    <button class="btn btn-primary btn-sm">Excluir</button>
+                    <hr>
+                    <div>
+                        <label class="form-check-label me-2">Status:</label>
+                        <input type="radio" name="status3" value="A Fazer"> A Fazer
+                        <input type="radio" name="status3" value="Fazendo"> Fazendo
+                        <input type="radio" name="status3" value="Pronto" checked> Pronto
+                    </div>
+                    <button class="btn btn-primary btn-sm mt-2">Alterar Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
