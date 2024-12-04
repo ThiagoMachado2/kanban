@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "usuario")
 public class User {
     @Id
@@ -25,15 +22,10 @@ public class User {
     @NotNull(message = "Email cannot be null")
     private String email;
 
-
-
-
-    // Getter para o email
     public String getEmail() {
         return email;
     }
 
-    // Setter para o email
     public void setEmail(String email) {
         this.email = email;
     }
@@ -44,6 +36,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

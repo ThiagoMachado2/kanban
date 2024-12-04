@@ -16,24 +16,19 @@ public class Task {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
     private String sector;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Priority priority;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Status status;
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }

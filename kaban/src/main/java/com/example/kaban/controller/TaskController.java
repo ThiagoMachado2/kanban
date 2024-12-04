@@ -2,10 +2,12 @@ package com.example.kaban.controller;
 
 import com.example.kaban.model.Task;
 import com.example.kaban.service.TaskService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -27,6 +29,15 @@ public class TaskController {
         return taskService.getTasksByUserId(userId);
     }
 
+    @GetMapping("/{taskId}")
+    public ResponseEntity<Task> getTaskById(@PathVariable Long taskId) {
+        Task task = taskService.getTaskById(taskId);
+        if (task == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(task);
+    }
+
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestParam Long userId, @RequestBody Task task) {
         Task createdTask = taskService.createTask(userId, task);
@@ -38,6 +49,20 @@ public class TaskController {
         Task updatedTask = taskService.updateTask(taskId, task);
         return ResponseEntity.ok(updatedTask);
     }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Task> updateStatus(@PathVariable Long id, @RequestParam Task.Status status) {
+        Task updatedTask = taskService.updateStatus(id, status);
+        return ResponseEntity.ok(updatedTask);
+    }
+
+    @PutMapping("/{id}/priority")
+    public ResponseEntity<Task> updatePriority(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        String newPriority = payload.get("priority");
+        Task updatedTask = taskService.updatePriority(id, Task.Priority.valueOf(newPriority));
+        return ResponseEntity.ok(updatedTask);
+    }
+
 
     @DeleteMapping("/{taskId}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
